@@ -7,7 +7,7 @@ public class PriorityQueue {
         items = new int[length];
     }
     void insert(int item){
-        if(count == items.length)
+         if(count == items.length)
             throw new IllegalStateException();
         int i;
         for(i = count - 1; i>0;i--){

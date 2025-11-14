@@ -1,8 +1,8 @@
 package Heaps;
 
 public class Heap {
-    public Heap(int n) {
-        heap = new int[n];
+    public Heap() {
+        heap = new int[10];
     }
 
     int[] heap;
@@ -29,7 +29,8 @@ public class Heap {
         heap[second] = temp;
     }
 
-    public void remove() {
+    public int remove() {
+        var root = heap[0];
         if (size == 0)
             throw new IllegalStateException();
 
@@ -40,7 +41,7 @@ public class Heap {
             swap(index, largerIndex);
             index = largerIndex;
         }
-
+     return root;
     }
 
     private int largerIndex(int index) {
@@ -61,6 +62,10 @@ public class Heap {
             isValid &= heap[index] >= rightChild(index);
         }
         return isValid;
+    }
+
+    public boolean isEmpty() {
+        return size == 0;
     }
 
     private boolean hasLeftChild(int index){
@@ -85,6 +90,12 @@ public class Heap {
 
     private int rightChildIndex(int index) {
         return index * 2 + 2;
+    }
+
+    public int max(){
+        if(isEmpty())
+            throw new IllegalStateException();
+        return heap[0];
     }
 
 }
